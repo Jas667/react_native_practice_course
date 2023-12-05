@@ -4,7 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>StyleSheet API</Text>
+      <View>
+        <Text style={[styles.lightBlueBg, styles.box]}>Light blue box</Text>
+      </View>
+      <View>
+        <Text style={[styles.lightGreenBg, styles.box]}>Light green box</Text>
+      </View>
     </View>
   );
 }
@@ -15,10 +20,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'plum',
     padding: 60,
   },
-  title: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 50,
-    fontWeight: 'bold',
+  box: {
+    padding: 10,
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+  },
+  lightBlueBg: {
+    backgroundColor: 'lightblue',
+  },
+  lightGreenBg: {
+    backgroundColor: 'lightgreen',
   },
 });
