@@ -1,14 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={[styles.lightBlueBg, styles.box]}>Light blue box</Text>
+      <View style={styles.darkMode}>
+        <Text style={styles.darkModeText}>Style Inheritance</Text>
       </View>
       <View>
-        <Text style={[styles.lightGreenBg, styles.box]}>Light green box</Text>
+        <Text
+          style={[
+            styles.lightBlueBg,
+            styles.box,
+            styles.boxShadow,
+            styles.shadowColor,
+          ]}
+        >
+          Light blue box
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={[
+            styles.lightGreenBg,
+            styles.box,
+            styles.androidBoxShadow,
+            styles.shadowColor,
+          ]}
+        >
+          Light green box
+        </Text>
       </View>
     </View>
   );
@@ -17,19 +38,39 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'plum',
+    backgroundColor: "plum",
     padding: 60,
+  },
+  darkMode: {
+    backgroundColor: "black",
+  },
+  darkModeText: {
+    color: "white",
   },
   box: {
     padding: 10,
-    width: 100,
-    height: 100,
-    marginBottom: 20,
+    width: 250,
+    height: 250,
+    marginVertical: 20,
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 10,
   },
   lightBlueBg: {
-    backgroundColor: 'lightblue',
+    backgroundColor: "lightblue",
   },
   lightGreenBg: {
-    backgroundColor: 'lightgreen',
+    backgroundColor: "lightgreen",
+  },
+  boxShadow: {
+    shadowOffset: { width: 6, height: 6 },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+  },
+  androidBoxShadow: {
+    elevation: 10,
+  },
+  shadowColor: {
+    shadowColor: "blue",
   },
 });
