@@ -1,5 +1,30 @@
 import { View, Text, StyleSheet, Platform, Image } from "react-native";
 
+const getTypeDetails = (type) => {
+  switch (type.toLowerCase()) {
+    case "fire":
+      return {
+        borderColor: "#f08030",
+        emoji: "🔥",
+      };
+    case "water":
+      return {
+        borderColor: "#6890f0",
+        emoji: "💦",
+      };
+    case "grass":
+      return {
+        borderColor: "#78c850",
+        emoji: "🌿",
+      };
+    case "electric":
+      return {
+        borderColor: "#f8d030",
+        emoji: "⚡",
+      };
+  }
+};
+
 export default function PokemonCard({
   name,
   image,
@@ -8,22 +33,33 @@ export default function PokemonCard({
   moves,
   weaknesses,
 }) {
+  const { borderColor, emoji } = getTypeDetails(type);
   return (
     <View style={styles.card}>
-      <View>
-        <Text>{name}</Text>
-        <Text>{hp}</Text>
+      <View style={styles.nameContainer}>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.hp}>❤ {hp}</Text>
       </View>
-      <Image source={image} accessibilityLabel={`${name} pokemon`} />
-      <View>
-        <Text>{type}</Text>
+      <Image
+        source={image}
+        accessibilityLabel={`${name} pokemon`}
+        style={styles.image}
+        resizeMode="contain"
+      />
+      <View style={styles.typeContainer}>
+        <View style={[styles.badge, { borderColor }]}>
+          <Text style={styles.typeEmoji}>{emoji}</Text>
+          <Text style={styles.typeText}>{type}</Text>
+        </View>
       </View>
 
-      <View>
-        <Text>Moves: {moves.join(", ")}</Text>
+      <View style={styles.movesContainer}>
+        <Text style={styles.movesText}>Moves: {moves.join(", ")}</Text>
       </View>
-      <View>
-        <Text>Weaknesses: {weaknesses.join(", ")}</Text>
+      <View style={styles.weaknessContainer}>
+        <Text style={styles.weaknessText}>
+          Weaknesses: {weaknesses.join(", ")}
+        </Text>
       </View>
     </View>
   );
@@ -50,5 +86,56 @@ const styles = StyleSheet.create({
         elevation: 5,
       },
     }),
+  },
+  nameContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    bottomMargin: 32,
+  },
+  name: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  hp: {
+    fontSize: 22,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+    marginBottom: 16,
+  },
+  typeContainer: {
+    marginBottom: 40,
+    alignItems: "center",
+  },
+  badge: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    borderWidth: 4,
+  },
+  typeEmoji: {
+    fontSize: 30,
+    marginRight: 12,
+  },
+  typeText: {
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  movesContainer: {
+    marginBottom: 16,
+  },
+  movesText: {
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  weaknessContainer: {
+    marginBottom: 8,
+  },
+  weaknessText: {
+    fontSize: 22,
+    fontWeight: "bold",
   },
 });

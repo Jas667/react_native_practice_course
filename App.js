@@ -5,7 +5,7 @@ export default function App() {
   const squData = {
     name: "Squirtle",
     image: require("./assets/Image1.png"),
-    type: "Air",
+    type: "Fire",
     hp: 70,
     moves: ["Tackle", "Tail Whip", "Water Gun", "Bubble"],
     weaknesses: ["Electric", "Grass"],
