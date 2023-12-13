@@ -4,22 +4,22 @@ const getTypeDetails = (type) => {
   switch (type.toLowerCase()) {
     case "fire":
       return {
-        borderColor: "#f08030",
+        borderColor: "orange",
         emoji: "🔥",
       };
     case "water":
       return {
-        borderColor: "#6890f0",
+        borderColor: "blue",
         emoji: "💦",
       };
     case "grass":
       return {
-        borderColor: "#78c850",
+        borderColor: "green",
         emoji: "🌿",
       };
     case "electric":
       return {
-        borderColor: "#f8d030",
+        borderColor: "purple",
         emoji: "⚡",
       };
   }
